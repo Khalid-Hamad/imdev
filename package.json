@@ -12,7 +12,8 @@
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "db:export:about": "tsx scripts/export-about-seed.ts",
-    "db:seed:about": "tsx scripts/seed-about.ts"
+    "db:seed:about": "tsx scripts/seed-about.ts",
+    "docker:migrate": "docker compose up -d postgres && docker compose run --rm migrate"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

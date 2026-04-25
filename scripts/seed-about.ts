@@ -31,9 +31,10 @@ async function main() {
   const client = postgres(url);
   const db = drizzle(client, { schema: { aboutSections } });
 
-  const [{ n }] = await db
+  const [row] = await db
     .select({ n: count() })
     .from(aboutSections);
+  const n = Number(row?.n ?? 0);
   if (n > 0) {
     console.log(`seed-about: about_sections has ${n} row(s), skipping import`);
     await client.end();

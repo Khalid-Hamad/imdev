@@ -8,6 +8,7 @@ services:
 
   migrate:
     environment:
+      CI: "true"
       DATABASE_URL: postgres://${POSTGRES_USER:-imdev}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-imdev}
 
   app:

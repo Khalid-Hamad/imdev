@@ -1,9 +1,18 @@
+# Local development: run the whole app in Docker (no separate `npm run dev`).
+# DB data: volume `imdev_dev_pgdata` (or project_pgdata_dev per compose project name)
+#
+#   docker compose -f docker-compose.dev.yml up --build -d
+#   open http://localhost:3000
+#
+name: imdev-dev
+
 services:
   postgres:
     image: postgres:16-alpine
     restart: unless-stopped
+    # Host 5433 avoids clashing with another Postgres on 5432 (e.g. other compose stacks).
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       POSTGRES_USER: imdev
       POSTGRES_PASSWORD: imdev
@@ -15,6 +24,46 @@ services:
       interval: 5s
       timeout: 3s
       retries: 5
+
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    command: sh /app/scripts/migrate-and-seed.sh
+    environment:
+      CI: "true"
+      DATABASE_URL: postgres://imdev:imdev@postgres:5432/imdev
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    # Host port 3005 — change the left side if you prefer (e.g. 3000:3000).
+    ports:
+      - "3005:3000"
+    environment:
+      DATABASE_URL: postgres://imdev:imdev@postgres:5432/imdev
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-dev-local-only-change-in-production}
+      BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:3005}
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3005}
+      BLOB_READ_WRITE_TOKEN: ${BLOB_READ_WRITE_TOKEN:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/api/auth/session || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
 
 volumes:
   pgdata_dev:

@@ -1,0 +1,17 @@
+node_modules
+.next
+.git
+.gitignore
+.env*.local
+.env.production
+*.md
+!README.md
+!DESIGN.md
+docker-compose*.yml
+Dockerfile
+.dockerignore
+.vscode
+.cursor
+.DS_Store
+coverage
+.vercel

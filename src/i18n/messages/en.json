@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "blog": "Blog",
+    "projects": "Projects",
+    "uses": "Uses"
+  },
+  "home": {
+    "greeting": "Hi, I'm",
+    "name": "Khalid.",
+    "titleAccent": "Applied AI & Software Engineer",
+    "heroLine1": "building ",
+    "heroAccent1": "AI-native systems",
+    "heroLine1End": " from idea to production.",
+    "heroBody": "I work at the intersection of software engineering, applied AI, and platform delivery turning complex ideas into reliable products, intelligent workflows, and scalable systems.",
+    "heroClosingPre": "Based in ",
+    "heroClosingAccent": "Saudi Arabia",
+    "heroClosingPost": ", I'm focused on building practical AI systems that support real teams, real users, and the next wave of digital transformation.",
+    "featuredProjects": "Featured Projects",
+    "latestPosts": "Latest Posts",
+    "viewAll": "View all",
+    "learnMore": "Learn more about me"
+  },
+  "about": {
+    "title": "About",
+    "description": "End-to-End Engineer with deep experience across AI, backend, frontend, and infrastructure.",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Technical Skills",
+    "certifications": "Certifications"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Thoughts on engineering, AI, and building systems that matter.",
+    "readMore": "Read more",
+    "minRead": "{count, plural, one {1 min read} other {# min read}}",
+    "noPosts": "No posts yet. Check back soon.",
+    "backToBlog": "Back to blog",
+    "helpful": "Did you find this helpful?"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "A collection of things I've built — from AI models to full-stack applications.",
+    "viewProject": "View project",
+    "viewCode": "View code",
+    "liveDemo": "Live demo",
+    "noProjects": "No projects yet. Check back soon.",
+    "backToProjects": "Back to projects"
+  },
+  "uses": {
+    "title": "Uses",
+    "description": "The tools, technologies, and setup I use for my work.",
+    "yearsExp": "{count, plural, one {1 year} other {# years}}",
+    "noItems": "No items yet."
+  },
+  "footer": {
+    "copyright": "All rights reserved.",
+    "description": "Software · Applied AI · ML"
+  },
+  "auth": {
+    "signInTitle": "Sign in to admin panel",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign in",
+    "signingIn": "Signing in...",
+    "loginFailed": "Login failed"
+  },
+  "common": {
+    "backToHome": "Back to home",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "notFound": "Page not found",
+    "comingSoon": "Content coming soon."
+  }
+}

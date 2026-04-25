@@ -90,7 +90,7 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml --env-file .env.
 
 echo ""
 echo "=== Setup Complete ==="
-echo "App is running at http://$(hostname -I | awk '{print $1}'):3000"
+echo "App is running at http://$(hostname -I | awk '{print $1}'):3100 (internal, proxied by Nginx)"
 echo ""
 echo "Next steps:"
 echo "  1. Point your domain (im.dev) A record to this server's IP in Cloudflare"

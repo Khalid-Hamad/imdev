@@ -12,7 +12,7 @@ services:
 
   app:
     ports:
-      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:3100:3000"
     environment:
       DATABASE_URL: postgres://${POSTGRES_USER:-imdev}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-imdev}
       BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?BETTER_AUTH_SECRET is required}

@@ -2,7 +2,7 @@
 # DB data: volume `imdev_dev_pgdata` (or project_pgdata_dev per compose project name)
 #
 #   docker compose -f docker-compose.dev.yml up --build -d
-#   open http://localhost:3000
+#   open http://localhost:3005
 #
 name: imdev-dev
 

@@ -18,7 +18,19 @@ export async function getUsesItemsByCategory() {
     if (!grouped[item.category]) grouped[item.category] = [];
     grouped[item.category].push(item);
   }
-  return grouped;
+  for (const key of Object.keys(grouped)) {
+    grouped[key].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
+  }
+  const categoryOrder = Object.keys(grouped).sort((a, b) => {
+    const minA = Math.min(...grouped[a].map((i) => i.sortOrder ?? 0));
+    const minB = Math.min(...grouped[b].map((i) => i.sortOrder ?? 0));
+    return minA - minB;
+  });
+  const ordered: Record<string, (typeof items)[number][]> = {};
+  for (const cat of categoryOrder) {
+    ordered[cat] = grouped[cat]!;
+  }
+  return ordered;
 }
 
 export async function createUsesItem(data: NewUsesItem) {

@@ -23,7 +23,7 @@ services:
       context: .
       dockerfile: Dockerfile
       target: builder
-    command: npx drizzle-kit push
+    command: sh -c "npx drizzle-kit push && npx tsx scripts/seed-about.ts"
     environment:
       DATABASE_URL: postgres://imdev:imdev@postgres:5432/imdev
     depends_on:

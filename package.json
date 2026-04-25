@@ -10,7 +10,9 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "db:export:about": "tsx scripts/export-about-seed.ts",
+    "db:seed:about": "tsx scripts/seed-about.ts"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
@@ -45,6 +47,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
     "tailwindcss": "^4",
+    "tsx": "^4.20.0",
     "typescript": "^5"
   }
 }

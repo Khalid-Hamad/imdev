@@ -35,6 +35,9 @@ yarn-error.log*
 .env*.local
 .env.production
 
+# user-uploaded assets (local / self-hosted)
+public/uploads/uses/
+
 # vercel
 .vercel
 

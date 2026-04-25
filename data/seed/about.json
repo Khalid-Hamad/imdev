@@ -1,0 +1,49 @@
+[
+  {
+    "type": "overview",
+    "data": {
+      "name": "Khalid AlSubaie",
+      "location": "Saudi Arabia",
+      "bioEn": "Applied AI & software engineer — building AI-native systems from idea to production.",
+      "bioAr": "مهندس ذكاء اصطناعي تطبيقي وبرمجيات — أبني أنظمة بذكاء اصطناعي أصلي من الفكرة إلى الإنتاج.",
+      "summaryEn": "I work at the intersection of software engineering, applied AI, and platform delivery — turning complex ideas into reliable products, intelligent workflows, and scalable systems. Based in Saudi Arabia, I focus on practical AI that supports real teams and the next wave of digital transformation.",
+      "summaryAr": "أعمل عند تقاطع هندسة البرمجيات والذكاء الاصطناعي التطبيقي وتسليم المنصات. مقيم في المملكة العربية السعودية، أركز على أثر عملي وقابلية التوسع."
+    }
+  },
+  {
+    "type": "experience",
+    "data": {
+      "company": "Your organization",
+      "role": "Software Engineer (Applied AI)",
+      "period": "2020 – Present",
+      "location": "Saudi Arabia",
+      "highlights": [
+        "End-to-end delivery: backend, frontend, data, and platform.",
+        "Applied AI: shipping models and workflows to production, not just demos."
+      ]
+    }
+  },
+  {
+    "type": "education",
+    "data": {
+      "degree": "B.Sc. (example)",
+      "school": "Your university",
+      "year": "20XX",
+      "location": "Saudi Arabia"
+    }
+  },
+  {
+    "type": "skills",
+    "data": {
+      "category": "Languages & platforms",
+      "items": ["TypeScript", "Python", "PostgreSQL", "Docker", "Cloud"]
+    }
+  },
+  {
+    "type": "skills",
+    "data": {
+      "category": "AI & data",
+      "items": ["LLMs", "RAG", "MLOps basics", "Evaluation"]
+    }
+  }
+]

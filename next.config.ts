@@ -6,6 +6,7 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 const nextConfig: NextConfig = {
   output: "standalone",
   images: {
+    localPatterns: [{ pathname: "/uploads/**", search: "" }],
     remotePatterns: [
       { protocol: "https", hostname: "**.vercel-storage.com" },
       { protocol: "https", hostname: "**.githubusercontent.com" },

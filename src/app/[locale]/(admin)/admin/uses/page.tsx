@@ -303,7 +303,7 @@ export default function AdminUsesPage() {
                         width={64}
                         height={64}
                         className="object-contain w-full h-full p-1"
-                        unoptimized={item.iconUrl.startsWith("/")}
+                        unoptimized
                       />
                     </div>
                   ) : (

@@ -2,6 +2,8 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { getAllSettings } from "@/lib/queries/settings";
 
+export const dynamic = "force-dynamic";
+
 export default async function MainLayout({
   children,
 }: {

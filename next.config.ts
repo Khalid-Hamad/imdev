@@ -24,6 +24,7 @@ if (s3PublicUrl) {
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  serverExternalPackages: ["postgres"],
   images: {
     localPatterns: [
       { pathname: "/uploads/**", search: "" },

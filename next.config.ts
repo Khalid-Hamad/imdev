@@ -25,7 +25,10 @@ if (s3PublicUrl) {
 const nextConfig: NextConfig = {
   output: "standalone",
   images: {
-    localPatterns: [{ pathname: "/uploads/**", search: "" }],
+    localPatterns: [
+      { pathname: "/uploads/**", search: "" },
+      { pathname: "/*.png", search: "" },
+    ],
     remotePatterns: remoteHosts,
   },
 };

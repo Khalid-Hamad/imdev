@@ -1,4 +1,4 @@
-import { pgTable, uuid, varchar, text, integer, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, uuid, varchar, text, integer, timestamp, jsonb } from "drizzle-orm/pg-core";
 
 export const usesItems = pgTable("uses_items", {
   id: uuid("id").defaultRandom().primaryKey(),
@@ -6,6 +6,7 @@ export const usesItems = pgTable("uses_items", {
   descriptionEn: text("description_en").default(""),
   descriptionAr: text("description_ar").default(""),
   category: varchar("category", { length: 100 }).notNull(),
+  tags: jsonb("tags").$type<string[]>().default([]),
   rating: integer("rating").default(0),
   iconUrl: varchar("icon_url", { length: 1000 }).default(""),
   sortOrder: integer("sort_order").default(0),

@@ -1,9 +1,9 @@
-import { put } from "@vercel/blob";
 import { writeFile, mkdir } from "fs/promises";
 import { join } from "path";
 import { randomUUID } from "crypto";
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { isS3Configured, uploadObject } from "@/lib/storage/s3";
 
 const MAX_BYTES = 3 * 1024 * 1024;
 const ALLOWED = new Set([
@@ -48,17 +48,22 @@ export async function POST(request: Request): Promise<NextResponse> {
     );
   }
 
-  if (process.env.BLOB_READ_WRITE_TOKEN) {
-    const blob = await put(`uses/${randomUUID()}${extFromType(type)}`, file, {
-      access: "public",
-    });
-    return NextResponse.json(blob);
+  const key = `uses/${randomUUID()}${extFromType(type)}`;
+  const buffer = Buffer.from(await file.arrayBuffer());
+
+  if (isS3Configured()) {
+    try {
+      const url = await uploadObject(key, buffer, type);
+      return NextResponse.json({ url, pathname: key });
+    } catch (e) {
+      console.error("S3 upload failed:", e);
+      return NextResponse.json({ error: "Upload failed" }, { status: 500 });
+    }
   }
 
-  const buffer = Buffer.from(await file.arrayBuffer());
   const dir = join(process.cwd(), "public", "uploads", "uses");
   await mkdir(dir, { recursive: true });
-  const name = `${randomUUID()}${extFromType(type)}`;
+  const name = key.split("/").pop()!;
   const filePath = join(dir, name);
   await writeFile(filePath, buffer);
 

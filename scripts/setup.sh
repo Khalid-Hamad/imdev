@@ -2,7 +2,7 @@
 set -euo pipefail
 
 echo "=== imdev Server Setup ==="
-echo "Run this script on a fresh Ubuntu 24.04 Droplet as root."
+echo "Run this script on a fresh Ubuntu VPS (Hostinger / any provider) as root."
 echo ""
 
 # ── 1. System updates ───────────────────────────
@@ -66,18 +66,33 @@ if [ ! -f "${ENV_FILE}" ]; then
 POSTGRES_USER=imdev
 POSTGRES_PASSWORD=${PG_PASS}
 POSTGRES_DB=imdev
+POSTGRES_PORT=127.0.0.1:5432
+
+APP_PORT=127.0.0.1:3100
 
 BETTER_AUTH_SECRET=${AUTH_SECRET}
 BETTER_AUTH_URL=https://im.dev
 NEXT_PUBLIC_APP_URL=https://im.dev
-BLOB_READ_WRITE_TOKEN=
+
+# Admin account (created on first deploy by seed-admin).
+ADMIN_EMAIL=
+ADMIN_PASSWORD=
+
+# Cloudflare R2 (fill in after creating the bucket).
+S3_ENDPOINT=
+S3_REGION=auto
+S3_BUCKET=
+S3_ACCESS_KEY_ID=
+S3_SECRET_ACCESS_KEY=
+S3_PUBLIC_URL=
 ENVEOF
 
     chmod 600 "${ENV_FILE}"
     echo "Created ${ENV_FILE} with generated secrets."
     echo ""
-    echo "!!! IMPORTANT: Review and note your secrets:"
-    echo "    ${ENV_FILE}"
+    echo "!!! IMPORTANT: Edit ${ENV_FILE} to set:"
+    echo "    - ADMIN_EMAIL and ADMIN_PASSWORD"
+    echo "    - S3_* credentials (Cloudflare R2)"
     echo ""
 else
     echo ".env.production already exists, skipping."
@@ -86,14 +101,15 @@ fi
 # ── 9. Build and start ──────────────────────────
 echo ">>> Building and starting the application..."
 cd "${APP_DIR}"
-docker compose -f docker-compose.yml -f docker-compose.prod.yml --env-file .env.production up --build -d
+docker compose --env-file .env.production up --build -d
 
 echo ""
 echo "=== Setup Complete ==="
-echo "App is running at http://$(hostname -I | awk '{print $1}'):3100 (internal, proxied by Nginx)"
+echo "App is running at http://$(hostname -I | awk '{print $1}'):3100 (proxied by Nginx)"
 echo ""
 echo "Next steps:"
-echo "  1. Point your domain (im.dev) A record to this server's IP in Cloudflare"
-echo "  2. Set Cloudflare SSL mode to 'Full'"
-echo "  3. Visit https://im.dev to verify"
-echo "  4. Visit https://im.dev/en/login to create your admin account"
+echo "  1. Edit ${ENV_FILE} — set ADMIN_EMAIL, ADMIN_PASSWORD, S3_* credentials"
+echo "  2. Re-deploy: bash scripts/deploy.sh"
+echo "  3. Point im.dev A record to this server's IP in Cloudflare"
+echo "  4. Set Cloudflare SSL mode to 'Full (Strict)' with origin cert, or 'Full'"
+echo "  5. Visit https://im.dev to verify"

@@ -2,48 +2,225 @@
   {
     "type": "overview",
     "data": {
-      "name": "Khalid AlSubaie",
-      "location": "Saudi Arabia",
-      "bioEn": "Applied AI & software engineer — building AI-native systems from idea to production.",
-      "bioAr": "مهندس ذكاء اصطناعي تطبيقي وبرمجيات — أبني أنظمة بذكاء اصطناعي أصلي من الفكرة إلى الإنتاج.",
-      "summaryEn": "I work at the intersection of software engineering, applied AI, and platform delivery — turning complex ideas into reliable products, intelligent workflows, and scalable systems. Based in Saudi Arabia, I focus on practical AI that supports real teams and the next wave of digital transformation.",
-      "summaryAr": "أعمل عند تقاطع هندسة البرمجيات والذكاء الاصطناعي التطبيقي وتسليم المنصات. مقيم في المملكة العربية السعودية، أركز على أثر عملي وقابلية التوسع."
+      "name": "Khalid Hamad AlSubaie",
+      "location": "Riyadh, Saudi Arabia",
+      "bioEn": "Lead engineer moving deeper into Engineering + Applied AI — LLM/CV prototyping, platform delivery, and secure scalable environments for AI products.",
+      "bioAr": "مهندس قيادي يتجه نحو الهندسة والذكاء الاصطناعي التطبيقي — نمذجة LLM ورؤية الحاسوب، وتسليم المنصات، وبناء بيئات آمنة وقابلة للتوسع لمنتجات الذكاء الاصطناعي.",
+      "summaryEn": "Lead engineer transitioning deeper into Engineering + Applied AI, combining hands-on LLM/CV prototyping with strong platform delivery. Build secure, scalable environments for AI products (Azure/OCI, Kubernetes, CI/CD, GitOps, monitoring) and drive measurable improvements in SDLC, reliability, and deployment outcomes.",
+      "summaryAr": "مهندس قيادي يدمج النمذجة العملية لنماذج اللغات الكبيرة ورؤية الحاسوب مع تسليم المنصات القوي؛ يبني بيئات آمنة وقابلة للتوسع لمنتجات الذكاء الاصطناعي (Azure/OCI، Kubernetes، CI/CD، GitOps، المراقبة) ويحسّن دورة حياة التطوير والموثوقية والنشر بشكل قابل للقياس."
     }
   },
   {
     "type": "experience",
     "data": {
-      "company": "Your organization",
-      "role": "Software Engineer (Applied AI)",
-      "period": "2020 – Present",
-      "location": "Saudi Arabia",
+      "company": "HUMAIN",
+      "role": "Lead Engineer, Application Science (Advanced Technologies Lab)",
+      "period": "Sep 2025 – Present",
+      "location": "Riyadh, Saudi Arabia",
       "highlights": [
-        "End-to-end delivery: backend, frontend, data, and platform.",
-        "Applied AI: shipping models and workflows to production, not just demos."
+        "Kubernetes-aware LLM converting natural-language intent into validated kubectl commands; QLoRA fine-tuning and safety controls (syntax validation, allowlist/denylist) with a 1,966-case evaluation suite.",
+        "Reproducible evaluation workflow for fine-tuning variants and prompting strategies; A/B harness with metrics (success rate, safety rate, latency p50/p95).",
+        "Multiple AI solution use cases for LLMs and computer vision; deployable prototypes with acceptance criteria (~10 stakeholder demos).",
+        "Agent-based eLearning platform as technical lead — architecture, delivery, and cross-functional coordination."
+      ]
+    }
+  },
+  {
+    "type": "experience",
+    "data": {
+      "company": "Saudi Company for Artificial Intelligence (SCAI), merged into HUMAIN",
+      "role": "Lead Software Engineer (AI Lab) / Senior DevOps Engineer, Ops Team Lead",
+      "period": "Feb 2023 – Sep 2025",
+      "location": "Riyadh, Saudi Arabia",
+      "highlights": [
+        "Led cloud operations team of 6; multiple AI apps across dev/test/prod — ~99.9% uptime, MTTR < 30 min, ~2–3 incidents/month.",
+        "Established Azure DevOps as standard; migrated SCM from GitLab and boards from Jira across 40+ repos / 15+ projects.",
+        "GitFlow + PR governance; ~35% fewer hotfixes/rollbacks across 5+ teams.",
+        "CI/CD + Argo CD GitOps — ~70% fewer manual deploy steps; deploy time ~45 min → ~10 min.",
+        "SonarQube + Black Duck across 35+ repos — ~40% fewer critical/high findings.",
+        "CI optimization — build ~18 min → ~7 min.",
+        "Azure AI landing zones; Fortinet FW/WAF; observability (Azure Monitor, App Insights, ELK) — TTD < 5 min, TTR < 30 min.",
+        "AI/ML studios & MLOps workspace — env setup ~5 days → < 4 hours.",
+        "AD SSO/OAuth for 10+ apps; Azure EA RFP ~20% cost savings; M365 email migration zero downtime; Cloud Fusion ERP + ZATCA VAT automation (10,000+ invoices/mo, ~60% manual effort reduction)."
+      ]
+    }
+  },
+  {
+    "type": "experience",
+    "data": {
+      "company": "Digital Government Authority",
+      "role": "Consulting Engineer",
+      "period": "May 2024 – Aug 2024",
+      "location": "Riyadh, Saudi Arabia",
+      "highlights": [
+        "GitHub Actions CI/CD across 12+ repos — deploy ~30 min → ~8 min.",
+        "HA compliant Design System platform — 99.9% SLA.",
+        "Azure DevOps release automation, handover docs and runbooks."
+      ]
+    }
+  },
+  {
+    "type": "experience",
+    "data": {
+      "company": "Ministry of Justice (Najiz Platform)",
+      "role": "DevOps Engineer (Azure DevOps)",
+      "period": "Mar 2021 – Feb 2023",
+      "location": "Riyadh, Saudi Arabia",
+      "highlights": [
+        "Azure DevOps for 50+ projects; legacy migration to Azure across environments.",
+        "120+ CI/CD pipelines; 40–50 deployments/week, ~98% success.",
+        "Branch strategy & release management — ~30% fewer prod defects, ~35% fewer rollbacks.",
+        "Self-hosted agent pool (12) — ~60% shorter queue time.",
+        "Flutter mobile CI/CD (6 apps), bi-weekly cadence; DR RTO < 1h, RPO < 15 min."
+      ]
+    }
+  },
+  {
+    "type": "experience",
+    "data": {
+      "company": "LADUN Investment Co",
+      "role": "IT Operations Officer",
+      "period": "Jan 2021 – Mar 2021",
+      "location": "Riyadh, Saudi Arabia",
+      "highlights": [
+        "Vendor coordination for corporate website — ~10 weeks, 20+ pages/features.",
+        "Internal systems evaluation — 100+ issues resolved, avg resolution < 3 days."
       ]
     }
   },
   {
     "type": "education",
     "data": {
-      "degree": "B.Sc. (example)",
-      "school": "Your university",
-      "year": "20XX",
-      "location": "Saudi Arabia"
+      "degree": "M.S. Applied Artificial Intelligence",
+      "school": "IU University of Applied Sciences",
+      "year": "Expected 2026",
+      "location": "Bad Honnef, Germany"
+    }
+  },
+  {
+    "type": "education",
+    "data": {
+      "degree": "PGP in Artificial Intelligence",
+      "school": "Texas McCombs – ePortfolio",
+      "year": "2020",
+      "location": "Austin, USA"
+    }
+  },
+  {
+    "type": "education",
+    "data": {
+      "degree": "B.S. Software Engineering",
+      "school": "Al Yamamah University",
+      "year": "2018",
+      "location": "Riyadh, Saudi Arabia"
     }
   },
   {
     "type": "skills",
     "data": {
-      "category": "Languages & platforms",
-      "items": ["TypeScript", "Python", "PostgreSQL", "Docker", "Cloud"]
+      "category": "Languages",
+      "items": ["Python", "Bash", "YAML"]
     }
   },
   {
     "type": "skills",
     "data": {
-      "category": "AI & data",
-      "items": ["LLMs", "RAG", "MLOps basics", "Evaluation"]
+      "category": "AI / ML",
+      "items": [
+        "LLM fine-tuning (QLoRA)",
+        "Prompt-to-tool / command systems",
+        "A/B benchmarking",
+        "Evaluation harness design",
+        "Safety & validation guardrails",
+        "AI experimentation enablement"
+      ]
+    }
+  },
+  {
+    "type": "skills",
+    "data": {
+      "category": "Cloud & DevOps",
+      "items": [
+        "Azure",
+        "Oracle Cloud (OCI)",
+        "Azure DevOps",
+        "GitHub Actions",
+        "Argo CD",
+        "Terraform",
+        "Docker",
+        "Podman",
+        "SonarQube",
+        "Black Duck"
+      ]
+    }
+  },
+  {
+    "type": "skills",
+    "data": {
+      "category": "MLOps / deployment",
+      "items": [
+        "CI/CD for AI services",
+        "GitOps releases",
+        "Environment promotion",
+        "Observability (Azure Monitor, Application Insights, ELK)",
+        "DR (backup automation, failover)"
+      ]
+    }
+  },
+  {
+    "type": "skills",
+    "data": {
+      "category": "Data & backend / integrations",
+      "items": ["Microsoft AD", "SSO", "OAuth", "Automation scripting", "Enterprise integrations"]
+    }
+  },
+  {
+    "type": "skills",
+    "data": {
+      "category": "Selected projects (samples)",
+      "items": [
+        "Kubernetes Command Assistant LLM — QLoRA, kubectl guardrails, reproducible eval + A/B harness",
+        "AI Platform Release Automation — Azure DevOps, Argo CD, Terraform, Docker",
+        "Secure Azure AI Landing Zone — Fortinet, centralized observability",
+        "MLOps Workspace & AI/ML Studios — faster path from R&D to production"
+      ]
+    }
+  },
+  {
+    "type": "certification",
+    "data": {
+      "title": "Associate Engineer — Saudi Council of Engineers",
+      "details": "ID: 557527"
+    }
+  },
+  {
+    "type": "language",
+    "data": {
+      "name": "Arabic",
+      "level": "Native"
+    }
+  },
+  {
+    "type": "language",
+    "data": {
+      "name": "English",
+      "level": "Professional"
+    }
+  },
+  {
+    "type": "contact",
+    "data": {
+      "label": "Email",
+      "value": "k.h.alhamad@outlook.com",
+      "href": "mailto:k.h.alhamad@outlook.com"
+    }
+  },
+  {
+    "type": "contact",
+    "data": {
+      "label": "Mobile",
+      "value": "+966 55 011 2880",
+      "href": "tel:+966550112880"
     }
   }
 ]

@@ -1,13 +1,10 @@
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/container";
-import { Card, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { getPublishedProjects } from "@/lib/queries/projects";
 import { getLocalizedField } from "@/lib/utils";
-import { ExternalLink } from "lucide-react";
-import { GithubIcon as Github } from "@/components/icons";
+import { ProjectsGallery, type ProjectView } from "@/components/projects/projects-gallery";
+import { PROJECT_KINDS, normalizeKind, type ProjectKind } from "@/lib/projects-constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -37,9 +34,41 @@ function ProjectsContent({
   projects,
 }: {
   locale: string;
-  projects: Array<{ id: string; slug: string; titleEn: string; titleAr: string | null; descriptionEn: string | null; descriptionAr: string | null; techStack: string[] | null; githubUrl: string | null; huggingfaceUrl: string | null; demoUrl: string | null }>;
+  projects: Array<{
+    id: string;
+    slug: string;
+    titleEn: string;
+    titleAr: string | null;
+    descriptionEn: string | null;
+    descriptionAr: string | null;
+    kind: string | null;
+    techStack: string[] | null;
+    githubUrl: string | null;
+    huggingfaceUrl: string | null;
+    demoUrl: string | null;
+  }>;
 }) {
   const t = useTranslations("projects");
+
+  const view: ProjectView[] = projects.map((p) => ({
+    id: p.id,
+    slug: p.slug,
+    title: getLocalizedField(p, "title", locale) || "",
+    description: getLocalizedField(p, "description", locale) || "",
+    kind: normalizeKind(p.kind ?? "personal"),
+    techStack: (p.techStack as string[] | null) ?? [],
+    githubUrl: p.githubUrl,
+    huggingfaceUrl: p.huggingfaceUrl,
+    demoUrl: p.demoUrl,
+  }));
+
+  const kindLabels = PROJECT_KINDS.reduce<Record<ProjectKind, string>>(
+    (acc, k) => {
+      acc[k] = t(`kinds.${k}`);
+      return acc;
+    },
+    { professional: "", personal: "", educational: "" }
+  );
 
   return (
     <section className="py-24 md:py-32">
@@ -53,43 +82,12 @@ function ProjectsContent({
           </p>
         </div>
 
-        {projects.length === 0 ? (
-          <p className="text-[17px] text-[var(--color-text-secondary)] py-12">
-            {t("noProjects")}
-          </p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
-              <Card key={project.id} interactive className="h-full flex flex-col">
-                <Link href={`/projects/${project.slug}`} className="flex-1">
-                  <CardTitle>{getLocalizedField(project, "title", locale)}</CardTitle>
-                  <CardDescription>
-                    {getLocalizedField(project, "description", locale)}
-                  </CardDescription>
-                </Link>
-                {project.techStack && (project.techStack as string[]).length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {(project.techStack as string[]).slice(0, 5).map((tech) => (
-                      <Badge key={tech}>{tech}</Badge>
-                    ))}
-                  </div>
-                )}
-                <div className="flex items-center gap-3 mt-4 pt-4 border-t border-[var(--color-border-light)]">
-                  {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] transition-colors" onClick={(e) => e.stopPropagation()}>
-                      <Github className="w-4 h-4" />
-                    </a>
-                  )}
-                  {project.demoUrl && (
-                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] transition-colors" onClick={(e) => e.stopPropagation()}>
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
-              </Card>
-            ))}
-          </div>
-        )}
+        <ProjectsGallery
+          projects={view}
+          emptyLabel={t("noProjects")}
+          filterAllLabel={t("kinds.all")}
+          kindLabels={kindLabels}
+        />
       </Container>
     </section>
   );

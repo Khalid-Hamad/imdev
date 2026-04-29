@@ -25,7 +25,12 @@ export default function LoginPage() {
       } else {
         router.push("/admin/dashboard");
       }
-    } catch {
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "";
+      if (msg.includes("Failed to fetch") || msg.includes("NetworkError")) {
+        router.replace("/blocked");
+        return;
+      }
       toast.error(t("loginFailed"));
     } finally {
       setLoading(false);

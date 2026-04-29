@@ -3,12 +3,18 @@
 import { db } from "@/db";
 import { usesItems, type NewUsesItem } from "@/db/schema/uses";
 import { eq, asc } from "drizzle-orm";
+import { clampRating } from "@/lib/uses-constants";
 
 export async function getAllUsesItems() {
-  return db
+  const rows = await db
     .select()
     .from(usesItems)
     .orderBy(usesItems.category, asc(usesItems.sortOrder));
+  return rows.map((r) => ({
+    ...r,
+    rating: clampRating(r.rating),
+    tags: Array.isArray(r.tags) ? (r.tags as string[]) : [],
+  }));
 }
 
 export async function getUsesItemsByCategory() {

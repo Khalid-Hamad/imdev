@@ -4,7 +4,15 @@ import { Container } from "@/components/ui/container";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ViewTracker } from "@/components/view-tracker";
-import { MapPin, Briefcase, GraduationCap, Code, Award } from "lucide-react";
+import {
+  MapPin,
+  Briefcase,
+  GraduationCap,
+  Code,
+  Award,
+  Globe,
+  Mail,
+} from "lucide-react";
 import { getAboutSections } from "@/lib/queries/settings";
 import type { Metadata } from "next";
 
@@ -49,6 +57,8 @@ function AboutContent({
   const educations = sections.filter((s) => s.type === "education");
   const skillGroups = sections.filter((s) => s.type === "skills");
   const certifications = sections.filter((s) => s.type === "certification");
+  const languages = sections.filter((s) => s.type === "language");
+  const contacts = sections.filter((s) => s.type === "contact");
 
   const overview = overviews[0]?.data;
 
@@ -247,6 +257,79 @@ function AboutContent({
                   </Card>
                 );
               })}
+            </div>
+          )}
+
+          {/* Languages */}
+          {languages.length > 0 && (
+            <div>
+              <div className="flex items-center gap-2 mb-6">
+                <Globe className="w-5 h-5 text-[var(--color-accent)]" />
+                <h2 className="text-[28px] font-semibold tracking-[-0.01em]">
+                  {t("languages")}
+                </h2>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {languages.map((lang, i) => {
+                  const d = lang.data;
+                  return (
+                    <Card key={i}>
+                      <p className="text-[15px] font-semibold text-[var(--color-text-primary)]">
+                        {(d.name as string) || ""}
+                      </p>
+                      <p className="text-[13px] text-[var(--color-accent)] mt-1">
+                        {(d.level as string) || ""}
+                      </p>
+                    </Card>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Contact / Links */}
+          {contacts.length > 0 && (
+            <div>
+              <div className="flex items-center gap-2 mb-6">
+                <Mail className="w-5 h-5 text-[var(--color-accent)]" />
+                <h2 className="text-[28px] font-semibold tracking-[-0.01em]">
+                  {t("contact")}
+                </h2>
+              </div>
+              <Card>
+                <ul className="space-y-2">
+                  {contacts.map((c, i) => {
+                    const d = c.data;
+                    const label = (d.label as string) || "";
+                    const value = (d.value as string) || "";
+                    const href = (d.href as string) || "";
+                    return (
+                      <li
+                        key={i}
+                        className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[15px]"
+                      >
+                        <span className="font-semibold text-[var(--color-text-primary)] min-w-[110px]">
+                          {label}
+                        </span>
+                        {href ? (
+                          <a
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[var(--color-accent)] hover:underline break-all"
+                          >
+                            {value || href}
+                          </a>
+                        ) : (
+                          <span className="text-[var(--color-text-secondary)] break-all">
+                            {value}
+                          </span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </Card>
             </div>
           )}
         </div>

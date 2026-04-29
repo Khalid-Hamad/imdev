@@ -1,23 +1,36 @@
+# ─────────────────────────────────────────────────────────────
+# Unified docker-compose for local dev AND production.
+#
+# LOCAL (default):
+#   docker compose up --build -d          → http://localhost:3000
+#
+# PRODUCTION (Hostinger VPS):
+#   docker compose --env-file .env.production up --build -d
+#
+# All behavior differences are driven by environment variables.
+# See .env.example (local) and .env.production.example (prod).
+# ─────────────────────────────────────────────────────────────
+
 services:
-  # ── PostgreSQL ──────────────────────────────
+  # ── PostgreSQL ──────────────────────────────────────────────
   postgres:
     image: postgres:16-alpine
     restart: unless-stopped
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     environment:
-      POSTGRES_USER: imdev
-      POSTGRES_PASSWORD: imdev
-      POSTGRES_DB: imdev
+      POSTGRES_USER: ${POSTGRES_USER:-imdev}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-imdev}
+      POSTGRES_DB: ${POSTGRES_DB:-imdev}
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U imdev -d imdev"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-imdev} -d ${POSTGRES_DB:-imdev}"]
       interval: 5s
       timeout: 3s
       retries: 5
 
-  # ── Database migrations ─────────────────────
+  # ── Migrations + seed ──────────────────────────────────────
   migrate:
     build:
       context: .
@@ -26,37 +39,48 @@ services:
     command: sh /app/scripts/migrate-and-seed.sh
     environment:
       CI: "true"
-      DATABASE_URL: postgres://imdev:imdev@postgres:5432/imdev
+      DATABASE_URL: postgres://${POSTGRES_USER:-imdev}:${POSTGRES_PASSWORD:-imdev}@postgres:5432/${POSTGRES_DB:-imdev}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-dev-local-only-change-in-production-min-32-chars-xx}
     depends_on:
       postgres:
         condition: service_healthy
     restart: "no"
 
-  # ── Next.js application ─────────────────────
+  # ── Next.js application ────────────────────────────────────
   app:
     build:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "${APP_PORT:-3000}:3000"
+    volumes:
+      - uploads:/app/public/uploads
     environment:
-      DATABASE_URL: postgres://imdev:imdev@postgres:5432/imdev
-      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-change-me-to-a-random-secret-in-production}
+      DATABASE_URL: postgres://${POSTGRES_USER:-imdev}:${POSTGRES_PASSWORD:-imdev}@postgres:5432/${POSTGRES_DB:-imdev}
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-dev-local-only-change-in-production-min-32-chars-xx}
       BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:3000}
       NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
-      BLOB_READ_WRITE_TOKEN: ${BLOB_READ_WRITE_TOKEN:-}
+      S3_ENDPOINT: ${S3_ENDPOINT:-}
+      S3_REGION: ${S3_REGION:-auto}
+      S3_BUCKET: ${S3_BUCKET:-}
+      S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-}
+      S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-}
+      S3_PUBLIC_URL: ${S3_PUBLIC_URL:-}
     depends_on:
       postgres:
         condition: service_healthy
       migrate:
         condition: service_completed_successfully
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/api/auth/session || exit 1"]
-      interval: 10s
+      test: ["CMD-SHELL", "wget -qO /dev/null http://localhost:3000/ 2>&1 || exit 1"]
+      interval: 30s
       timeout: 5s
       retries: 3
-      start_period: 10s
+      start_period: 15s
 
 volumes:
   pgdata:
+  uploads:

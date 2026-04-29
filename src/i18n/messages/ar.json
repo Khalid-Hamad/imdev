@@ -28,7 +28,9 @@
     "experience": "الخبرة المهنية",
     "education": "التعليم",
     "skills": "المهارات التقنية",
-    "certifications": "الشهادات"
+    "certifications": "الشهادات",
+    "languages": "اللغات",
+    "contact": "التواصل"
   },
   "blog": {
     "title": "المدونة",
@@ -46,13 +48,25 @@
     "viewCode": "عرض الكود",
     "liveDemo": "عرض مباشر",
     "noProjects": "لا توجد مشاريع حالياً. تابعنا قريباً.",
-    "backToProjects": "العودة للمشاريع"
+    "backToProjects": "العودة للمشاريع",
+    "kinds": {
+      "all": "الكل",
+      "professional": "احترافي",
+      "personal": "شخصي",
+      "educational": "تعليمي"
+    }
   },
   "uses": {
     "title": "الأدوات",
     "description": "الأدوات والتقنيات وبيئة العمل التي أستخدمها يومياً.",
     "yearsExp": "{count, plural, one {سنة واحدة} two {سنتان} few {# سنوات} many {# سنة} other {# سنة}}",
-    "noItems": "لا توجد عناصر حالياً."
+    "noItems": "لا توجد عناصر حالياً.",
+    "tags": {
+      "all": "الكل",
+      "home": "المنزل",
+      "office": "المكتب",
+      "travel": "السفر"
+    }
   },
   "footer": {
     "copyright": "جميع الحقوق محفوظة.",

@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "kubernetes-command-assistant",
+    "titleEn": "Kubernetes command assistant (LLM)",
+    "titleAr": "مساعد أوامر Kubernetes (نموذج لغوي)",
+    "descriptionEn": "Natural-language intent to validated kubectl commands with QLoRA fine-tuning and safety guardrails.",
+    "descriptionAr": "تحويل النية اللغوية إلى أوامر kubectl مع ضبط QLoRA وحمايات أمان.",
+    "kind": "professional",
+    "status": "published",
+    "featured": true,
+    "techStack": ["Python", "Kubernetes", "LLM", "QLoRA"],
+    "githubUrl": "",
+    "demoUrl": "",
+    "sortOrder": 0
+  },
+  {
+    "slug": "ai-platform-gitops",
+    "titleEn": "AI platform release automation",
+    "titleAr": "أتمتة إصدارات منصة الذكاء الاصطناعي",
+    "descriptionEn": "Azure DevOps plus Argo CD GitOps across 15+ AI services with tracked promotion stages.",
+    "descriptionAr": "Azure DevOps مع Argo CD عبر أكثر من 15 خدمة ذكاء اصطناعي مع مراحل ترويج موثقة.",
+    "kind": "professional",
+    "status": "published",
+    "featured": true,
+    "techStack": ["Azure DevOps", "Argo CD", "Terraform", "Docker"],
+    "githubUrl": "",
+    "demoUrl": "",
+    "sortOrder": 1
+  },
+  {
+    "slug": "personal-dotfiles",
+    "titleEn": "Dotfiles & CLI ergonomics",
+    "titleAr": "إعدادات طرفية وأدوات سطر أوامر",
+    "descriptionEn": "Shell, Git aliases, and editor defaults tuned for fast context switching between stacks.",
+    "descriptionAr": "إعدادات الصدفة واختصارات Git والمحرر لتبديل السياقات بسرعة.",
+    "kind": "personal",
+    "status": "published",
+    "featured": false,
+    "techStack": ["Bash", "Git", "YAML"],
+    "githubUrl": "",
+    "demoUrl": "",
+    "sortOrder": 2
+  },
+  {
+    "slug": "applied-ml-coursework",
+    "titleEn": "Applied AI coursework portfolio",
+    "titleAr": "معرض أعمال ذكاء اصطناعي تطبيقي",
+    "descriptionEn": "Experiments from M.S. Applied AI — evaluation design, reproducibility, and reporting.",
+    "descriptionAr": "تجارب من ماجستير الذكاء الاصطناعي التطبيقي — تصميم التقييم وإعادة الإنتاج والتقارير.",
+    "kind": "educational",
+    "status": "published",
+    "featured": false,
+    "techStack": ["Python", "PyTorch", "Jupyter"],
+    "githubUrl": "",
+    "demoUrl": "",
+    "sortOrder": 3
+  }
+]

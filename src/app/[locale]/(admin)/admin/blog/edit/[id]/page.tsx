@@ -1,4 +1,3 @@
-import { getPostBySlug } from "@/lib/queries/posts";
 import { PostForm } from "@/components/admin/post-form";
 import { db } from "@/db";
 import { posts } from "@/db/schema/posts";

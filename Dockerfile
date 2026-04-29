@@ -20,6 +20,12 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+RUN test -f scripts/migrate-and-seed.sh && \
+    test -f scripts/seed-about.ts && test -f data/seed/about.json && \
+    test -f scripts/seed-uses.ts  && test -f data/seed/uses.json && \
+    test -f scripts/seed-projects.ts && test -f data/seed/projects.json && \
+    test -f scripts/seed-admin.ts
+
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 

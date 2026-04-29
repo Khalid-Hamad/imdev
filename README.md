@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# im.dev
 
-## Getting Started
+Personal website and portfolio — [im.dev](https://im.dev)
 
-First, run the development server:
+Built with Next.js 16, Drizzle ORM, PostgreSQL, and Cloudflare R2.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Quick start (local)
+
+```sh
+docker compose up --build -d
+open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This starts Postgres, runs migrations + seeds (about/CV, demo projects, demo tools), and launches the app. No extra config needed.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local development (without Docker)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```sh
+cp .env.example .env
+npm install
+npm run db:push        # push schema to Postgres
+npm run db:seed:all    # seed about + uses + projects + admin
+npm run dev            # http://localhost:3000
+```
 
-## Learn More
+## Production (VPS)
 
-To learn more about Next.js, take a look at the following resources:
+See [DEPLOY.md](./DEPLOY.md) for full Hostinger/Ubuntu deployment guide.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+# First time:
+bash scripts/setup.sh
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Subsequent deploys:
+bash scripts/deploy.sh
+```
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start dev server (Turbopack) |
+| `npm run build` | Production build |
+| `npm run db:push` | Push schema changes to DB |
+| `npm run db:seed:all` | Run all seed scripts |
+| `npm run db:seed:about:reset` | Truncate + re-seed about/CV |
+| `npm run docker:up` | Build and start (local) |
+| `npm run docker:prod` | Build and start (production) |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Stack
+
+- **Framework**: Next.js 16 (App Router, Turbopack)
+- **Database**: PostgreSQL 16 + Drizzle ORM
+- **Auth**: better-auth (email/password)
+- **i18n**: next-intl (English + Arabic)
+- **Storage**: Cloudflare R2 (S3-compatible) / local fallback
+- **Styling**: Tailwind CSS 4
+- **Deployment**: Docker Compose, Nginx, Cloudflare

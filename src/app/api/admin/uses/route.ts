@@ -2,6 +2,22 @@ import { NextResponse } from "next/server";
 import { db } from "@/db";
 import { usesItems } from "@/db/schema/uses";
 import { eq } from "drizzle-orm";
+import { clampRating, USES_TAGS } from "@/lib/uses-constants";
+
+const TAG_SET = new Set<string>(USES_TAGS);
+
+function normalizeTags(input: unknown): string[] {
+  if (!Array.isArray(input)) return [];
+  const out: string[] = [];
+  for (const t of input) {
+    if (typeof t !== "string") continue;
+    const trimmed = t.trim();
+    if (!trimmed) continue;
+    if (!TAG_SET.has(trimmed)) continue;
+    if (!out.includes(trimmed)) out.push(trimmed);
+  }
+  return out;
+}
 
 export async function GET() {
   try {
@@ -29,7 +45,8 @@ export async function PUT(request: Request) {
         descriptionEn: item.descriptionEn || "",
         descriptionAr: item.descriptionAr || "",
         category: item.category,
-        rating: item.rating || 0,
+        tags: normalizeTags(item.tags),
+        rating: clampRating(item.rating),
         iconUrl: item.iconUrl || "",
         sortOrder: i,
       };

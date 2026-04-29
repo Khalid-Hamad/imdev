@@ -28,7 +28,9 @@
     "experience": "Experience",
     "education": "Education",
     "skills": "Technical Skills",
-    "certifications": "Certifications"
+    "certifications": "Certifications",
+    "languages": "Languages",
+    "contact": "Contact"
   },
   "blog": {
     "title": "Blog",
@@ -46,13 +48,25 @@
     "viewCode": "View code",
     "liveDemo": "Live demo",
     "noProjects": "No projects yet. Check back soon.",
-    "backToProjects": "Back to projects"
+    "backToProjects": "Back to projects",
+    "kinds": {
+      "all": "All",
+      "professional": "Professional",
+      "personal": "Personal",
+      "educational": "Educational"
+    }
   },
   "uses": {
     "title": "Uses",
     "description": "The tools, technologies, and setup I use for my work.",
     "yearsExp": "{count, plural, one {1 year} other {# years}}",
-    "noItems": "No items yet."
+    "noItems": "No items yet.",
+    "tags": {
+      "all": "All",
+      "home": "Home",
+      "office": "Office",
+      "travel": "Travel"
+    }
   },
   "footer": {
     "copyright": "All rights reserved.",

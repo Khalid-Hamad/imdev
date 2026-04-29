@@ -8,6 +8,13 @@ import { Button } from "@/components/ui/button";
 import { slugify } from "@/lib/utils";
 import { toast } from "sonner";
 import type { Project } from "@/db/schema/projects";
+import { PROJECT_KINDS, type ProjectKind, normalizeKind } from "@/lib/projects-constants";
+
+const KIND_LABELS: Record<ProjectKind, string> = {
+  professional: "Professional",
+  personal: "Personal",
+  educational: "Educational",
+};
 
 export function ProjectForm({ project }: { project?: Project }) {
   const router = useRouter();
@@ -26,6 +33,9 @@ export function ProjectForm({ project }: { project?: Project }) {
   const [featured, setFeatured] = useState(project?.featured || false);
   const [status, setStatus] = useState(project?.status || "draft");
   const [coverImage, setCoverImage] = useState(project?.coverImage || "");
+  const [kind, setKind] = useState<ProjectKind>(
+    normalizeKind(project?.kind ?? "personal")
+  );
 
   function handleTitleChange(value: string) {
     setTitleEn(value);
@@ -38,7 +48,7 @@ export function ProjectForm({ project }: { project?: Project }) {
 
     const body = {
       titleEn, titleAr, slug, descriptionEn, descriptionAr,
-      contentEn, contentAr, coverImage, status, featured,
+      contentEn, contentAr, coverImage, status, featured, kind,
       githubUrl, huggingfaceUrl, demoUrl,
       techStack: techInput.split(",").map((t) => t.trim()).filter(Boolean),
     };
@@ -77,6 +87,25 @@ export function ProjectForm({ project }: { project?: Project }) {
         <Input label="GitHub URL" value={githubUrl} onChange={(e) => setGithubUrl(e.target.value)} />
         <Input label="HuggingFace URL" value={huggingfaceUrl} onChange={(e) => setHuggingfaceUrl(e.target.value)} />
         <Input label="Demo URL" value={demoUrl} onChange={(e) => setDemoUrl(e.target.value)} />
+      </div>
+      <div>
+        <p className="text-[13px] font-semibold mb-2">Kind</p>
+        <div className="flex flex-wrap gap-3">
+          {PROJECT_KINDS.map((k) => (
+            <button
+              key={k}
+              type="button"
+              onClick={() => setKind(k)}
+              className={`px-4 py-2 rounded-[var(--radius-pill)] text-[15px] font-medium border transition-colors ${
+                kind === k
+                  ? "border-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]"
+                  : "border-[var(--color-border)] text-[var(--color-text-secondary)]"
+              }`}
+            >
+              {KIND_LABELS[k]}
+            </button>
+          ))}
+        </div>
       </div>
       <div className="flex items-center gap-4">
         <label className="flex items-center gap-2 cursor-pointer">

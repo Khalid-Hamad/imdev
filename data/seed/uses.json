@@ -1,0 +1,112 @@
+[
+  {
+    "name": "MacBook Pro",
+    "descriptionEn": "Daily driver for builds, LLM fine-tuning notebooks, and Kubernetes tooling — portable enough for on-call.",
+    "descriptionAr": "جهاز العمل اليومي للبناء وتجارب ضبط النماذج وأدوات Kubernetes — خفيف للعمل أثناء الديمُوم.",
+    "category": "PC & Laptop",
+    "tags": ["Home", "Office", "Travel"],
+    "rating": 5,
+    "iconUrl": "https://cdn.simpleicons.org/apple/555555",
+    "sortOrder": 0
+  },
+  {
+    "name": "ThinkPad T series",
+    "descriptionEn": "Secondary Linux machine for infra scripting and long SSH sessions — legendary keyboard.",
+    "descriptionAr": "جهاز Linux ثانٍ لأتمتة البنية التحتية وجلسات SSH الطويلة — لوحة مفاتيح ممتازة.",
+    "category": "PC & Laptop",
+    "tags": ["Office"],
+    "rating": 4,
+    "iconUrl": "https://cdn.simpleicons.org/lenovo/222222",
+    "sortOrder": 1
+  },
+  {
+    "name": "Keychron mechanical keyboard",
+    "descriptionEn": "Hot-swappable switches; quieter profile for open offices without sacrificing feel.",
+    "descriptionAr": "مفاتيح قابلة للاستبدال؛ صوت أنسب للمكاتب المفتوحة مع إحساس كتابة ممتاز.",
+    "category": "Accessories",
+    "tags": ["Home", "Office"],
+    "rating": 5,
+    "iconUrl": "https://cdn.simpleicons.org/corsair/FFFF00",
+    "sortOrder": 2
+  },
+  {
+    "name": "Logitech MX Master",
+    "descriptionEn": "Ergo mouse with gesture buttons — flows between laptop and dock without pairing friction.",
+    "descriptionAr": "فأرة مريحة مع أزرار إيماءات؛ انتقال سلس بين اللابتوب والشاحن بدون إعادة ربط.",
+    "category": "Accessories",
+    "tags": ["Office", "Travel"],
+    "rating": 4,
+    "iconUrl": "https://cdn.simpleicons.org/logitech/00B8FC",
+    "sortOrder": 3
+  },
+  {
+    "name": "USB-C dock & calibrated monitor",
+    "descriptionEn": "Single-cable desk setup with color-accurate panel for demos and diagram-heavy docs.",
+    "descriptionAr": "إعداد مكتب بكابل واحد وشاشة دقيقة الألوان للعروض والمخططات.",
+    "category": "Hardware",
+    "tags": ["Office"],
+    "rating": 4,
+    "iconUrl": "https://cdn.simpleicons.org/dell/007DB8",
+    "sortOrder": 4
+  },
+  {
+    "name": "NVIDIA GPU workstation",
+    "descriptionEn": "Local CUDA runs for eval harnesses and smaller fine-tuning loops before promoting to cluster.",
+    "descriptionAr": "تشغيل CUDA محلياً لتجارب التقييم وحلقات الضبط الخفيفة قبل النقل للمجموعة.",
+    "category": "Hardware",
+    "tags": ["Home"],
+    "rating": 5,
+    "iconUrl": "https://cdn.simpleicons.org/nvidia/76B900",
+    "sortOrder": 5
+  },
+  {
+    "name": "VS Code",
+    "descriptionEn": "Extensions for YAML, Terraform, Python, and remote containers — default editor for services repos.",
+    "descriptionAr": "إضافات لـ YAML وTerraform وPython وحاويات بعيدة — المحرر الافتراضي لمستودعات الخدمات.",
+    "category": "Coding",
+    "tags": ["Home", "Office"],
+    "rating": 5,
+    "iconUrl": "https://cdn.simpleicons.org/visualstudiocode/007ACC",
+    "sortOrder": 6
+  },
+  {
+    "name": "Docker & Compose",
+    "descriptionEn": "Reproducible dev environments for microservices and CI parity with prod-like networking.",
+    "descriptionAr": "بيئات تطوير قابلة للتكرار للخدمات المصغّرة وتوافق CI مع شبكة قريبة من الإنتاج.",
+    "category": "Coding",
+    "tags": ["Office"],
+    "rating": 5,
+    "iconUrl": "https://cdn.simpleicons.org/docker/2496ED",
+    "sortOrder": 7
+  },
+  {
+    "name": "Kubernetes / kubectl ecosystem",
+    "descriptionEn": "GitOps with Argo CD, kubectl plugins, and strict contexts — matches platform delivery day-to-day.",
+    "descriptionAr": "GitOps مع Argo CD وإضافات kubectl وسياقات صارمة — يطابق عمل التسليم على المنصات.",
+    "category": "Software",
+    "tags": ["Office", "Travel"],
+    "rating": 5,
+    "iconUrl": "https://cdn.simpleicons.org/kubernetes/326CE5",
+    "sortOrder": 8
+  },
+  {
+    "name": "Notion",
+    "descriptionEn": "Runbooks, RFC light-docs, and stakeholder notes — single place before commits hit Git.",
+    "descriptionAr": "كتب التشغيل ومسودات RFC وملاحظات أصحاب المصلحة — مرجع واحد قبل الوصول إلى Git.",
+    "category": "Software",
+    "tags": ["Home", "Office", "Travel"],
+    "rating": 4,
+    "iconUrl": "https://cdn.simpleicons.org/notion/000000",
+    "sortOrder": 9
+  },
+  {
+    "name": "Noise-cancelling headset",
+    "descriptionEn": "Focus blocks during incident bridges and travel days — mic tuned for video calls.",
+    "descriptionAr": "عزل للتركيز أثناء حوادث الإنتاج وأيام السفر — ميكروفون مناسب للمكالمات المرئية.",
+    "category": "Accessories",
+    "tags": ["Travel"],
+    "rating": 4,
+    "iconUrl": "https://cdn.simpleicons.org/sony/E60012",
+    "sortOrder": 10
+  }
+]

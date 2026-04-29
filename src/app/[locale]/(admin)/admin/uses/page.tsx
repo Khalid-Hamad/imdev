@@ -7,6 +7,12 @@ import { Plus, Trash2, Save, Star, Upload, X } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import {
+  USES_CATEGORIES,
+  USES_TAGS,
+  RATING_MAX,
+  clampRating,
+} from "@/lib/uses-constants";
 
 interface UsesItem {
   id?: string;
@@ -14,23 +20,11 @@ interface UsesItem {
   descriptionEn: string;
   descriptionAr: string;
   category: string;
+  tags: string[];
   rating: number;
   iconUrl: string;
   sortOrder: number;
 }
-
-const CATEGORY_SUGGESTIONS = [
-  "Laptop",
-  "Accessories",
-  "Coding",
-  "Software",
-  "Languages",
-  "Frameworks",
-  "AI/ML",
-  "Infrastructure",
-  "Dev Tools",
-  "Hardware",
-];
 
 function RatingPicker({
   value,
@@ -42,15 +36,16 @@ function RatingPicker({
   return (
     <div className="flex flex-col gap-1.5">
       <span className="text-[13px] font-semibold text-[var(--color-text-primary)]">
-        Rating (optional)
+        Rating (optional, 0–{RATING_MAX})
       </span>
       <div className="flex items-center gap-1">
-        {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
+        {Array.from({ length: RATING_MAX }, (_, i) => i + 1).map((n) => (
           <button
             key={n}
             type="button"
             onClick={() => onChange(value === n ? 0 : n)}
             className="p-0.5"
+            aria-label={`Rate ${n} of ${RATING_MAX}`}
           >
             <Star
               className={cn(
@@ -64,9 +59,50 @@ function RatingPicker({
         ))}
         {value > 0 && (
           <span className="text-[13px] text-[var(--color-text-secondary)] ml-2">
-            {value}/10
+            {value}/{RATING_MAX}
           </span>
         )}
+      </div>
+    </div>
+  );
+}
+
+function TagsPicker({
+  value,
+  onChange,
+}: {
+  value: string[];
+  onChange: (v: string[]) => void;
+}) {
+  function toggle(tag: string) {
+    if (value.includes(tag)) onChange(value.filter((t) => t !== tag));
+    else onChange([...value, tag]);
+  }
+
+  return (
+    <div className="flex flex-col gap-1.5">
+      <span className="text-[13px] font-semibold text-[var(--color-text-primary)]">
+        Setup tags (optional)
+      </span>
+      <div className="flex flex-wrap gap-2">
+        {USES_TAGS.map((tag) => {
+          const active = value.includes(tag);
+          return (
+            <button
+              key={tag}
+              type="button"
+              onClick={() => toggle(tag)}
+              className={cn(
+                "px-3 py-1 rounded-[var(--radius-pill)] text-[13px] font-medium border transition-colors",
+                active
+                  ? "bg-[var(--color-accent)] text-white border-[var(--color-accent)]"
+                  : "bg-transparent text-[var(--color-text-secondary)] border-[var(--color-border)] hover:border-[var(--color-accent)]"
+              )}
+            >
+              {tag}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -83,14 +119,15 @@ export default function AdminUsesPage() {
       .then((data) => {
         setItems(
           data.map((d: Record<string, unknown>) => ({
-            id: d.id,
-            name: d.name || "",
-            descriptionEn: d.descriptionEn || "",
-            descriptionAr: d.descriptionAr || "",
-            category: d.category || "Software",
-            rating: d.rating || 0,
-            iconUrl: d.iconUrl || "",
-            sortOrder: d.sortOrder || 0,
+            id: d.id as string,
+            name: (d.name as string) || "",
+            descriptionEn: (d.descriptionEn as string) || "",
+            descriptionAr: (d.descriptionAr as string) || "",
+            category: (d.category as string) || USES_CATEGORIES[0],
+            tags: Array.isArray(d.tags) ? (d.tags as string[]) : [],
+            rating: clampRating(d.rating as number | null | undefined),
+            iconUrl: (d.iconUrl as string) || "",
+            sortOrder: (d.sortOrder as number) || 0,
           }))
         );
       })
@@ -105,7 +142,8 @@ export default function AdminUsesPage() {
         name: "",
         descriptionEn: "",
         descriptionAr: "",
-        category: "Software",
+        category: USES_CATEGORIES[0],
+        tags: [],
         rating: 0,
         iconUrl: "",
         sortOrder: items.length,
@@ -153,14 +191,15 @@ export default function AdminUsesPage() {
       const saved = await res.json();
       setItems(
         saved.map((d: Record<string, unknown>) => ({
-          id: d.id,
-          name: d.name || "",
-          descriptionEn: d.descriptionEn || "",
-          descriptionAr: d.descriptionAr || "",
-          category: d.category || "Software",
-          rating: d.rating || 0,
-          iconUrl: d.iconUrl || "",
-          sortOrder: d.sortOrder || 0,
+          id: d.id as string,
+          name: (d.name as string) || "",
+          descriptionEn: (d.descriptionEn as string) || "",
+          descriptionAr: (d.descriptionAr as string) || "",
+          category: (d.category as string) || USES_CATEGORIES[0],
+          tags: Array.isArray(d.tags) ? (d.tags as string[]) : [],
+          rating: clampRating(d.rating as number | null | undefined),
+          iconUrl: (d.iconUrl as string) || "",
+          sortOrder: (d.sortOrder as number) || 0,
         }))
       );
       toast.success("Uses saved successfully");
@@ -179,7 +218,7 @@ export default function AdminUsesPage() {
   return (
     <div>
       <datalist id="uses-category-suggestions">
-        {CATEGORY_SUGGESTIONS.map((c) => (
+        {USES_CATEGORIES.map((c) => (
           <option key={c} value={c} />
         ))}
       </datalist>
@@ -230,8 +269,11 @@ export default function AdminUsesPage() {
                   value={item.category}
                   onChange={(e) => updateItem(i, { category: e.target.value })}
                   className="w-full bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-[var(--radius-sm)] px-3 py-2 text-[15px] text-[var(--color-text-primary)]"
-                  placeholder="e.g. Software, Coding, Laptop"
+                  placeholder="Pick or type a category"
                 />
+                <p className="text-[12px] text-[var(--color-text-tertiary)] mt-1">
+                  Suggested: {USES_CATEGORIES.join(", ")}
+                </p>
               </div>
               <button
                 type="button"
@@ -250,7 +292,7 @@ export default function AdminUsesPage() {
               />
               <div>
                 <span className="block text-[13px] font-semibold text-[var(--color-text-primary)] mb-1.5">
-                  Icon
+                  Image
                 </span>
                 <div className="flex items-start gap-3 flex-wrap">
                   {item.iconUrl ? (
@@ -304,7 +346,8 @@ export default function AdminUsesPage() {
                       </button>
                     )}
                     <p className="text-[12px] text-[var(--color-text-tertiary)] max-w-[220px]">
-                      PNG, JPG, WebP, SVG up to 3MB. Vercel Blob if configured; otherwise stored under /uploads.
+                      PNG, JPG, WebP, SVG up to 3MB. Stored on S3 (R2) when
+                      configured; otherwise written under /uploads.
                     </p>
                   </div>
                 </div>
@@ -338,10 +381,14 @@ export default function AdminUsesPage() {
               />
             </div>
 
-            <div className="mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
               <RatingPicker
                 value={item.rating}
                 onChange={(v) => updateItem(i, { rating: v })}
+              />
+              <TagsPicker
+                value={item.tags}
+                onChange={(v) => updateItem(i, { tags: v })}
               />
             </div>
           </div>

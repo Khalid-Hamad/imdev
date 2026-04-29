@@ -14,6 +14,7 @@ export const projects = pgTable("projects", {
   githubUrl: varchar("github_url", { length: 1000 }).default(""),
   huggingfaceUrl: varchar("huggingface_url", { length: 1000 }).default(""),
   demoUrl: varchar("demo_url", { length: 1000 }).default(""),
+  kind: varchar("kind", { length: 20 }).notNull().default("personal"),
   featured: boolean("featured").default(false),
   sortOrder: integer("sort_order").default(0),
   status: varchar("status", { length: 20 }).notNull().default("draft"),

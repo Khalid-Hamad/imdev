@@ -9,6 +9,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import { GithubIcon as Github, LinkedinIcon as Linkedin } from "@/components/icons";
 import { getPublishedPosts } from "@/lib/queries/posts";
 import { getFeaturedProjects } from "@/lib/queries/projects";
+import { getAllSettings } from "@/lib/queries/settings";
 import { getLocalizedField, formatDate, readingTime } from "@/lib/utils";
 
 export default async function HomePage({
@@ -21,27 +22,36 @@ export default async function HomePage({
 
   let posts: Awaited<ReturnType<typeof getPublishedPosts>> = [];
   let projects: Awaited<ReturnType<typeof getFeaturedProjects>> = [];
+  let settings: Record<string, unknown> = {};
 
   try {
-    [posts, projects] = await Promise.all([
+    [posts, projects, settings] = await Promise.all([
       getPublishedPosts(),
       getFeaturedProjects(),
+      getAllSettings(),
     ]);
   } catch {
     // DB not available yet — render with empty data
   }
 
-  return <HomeContent locale={locale} posts={posts.slice(0, 3)} projects={projects} />;
+  const socialLinks = {
+    github: (settings.githubUrl as string) || "",
+    linkedin: (settings.linkedinUrl as string) || "",
+  };
+
+  return <HomeContent locale={locale} posts={posts.slice(0, 3)} projects={projects} socialLinks={socialLinks} />;
 }
 
 function HomeContent({
   locale,
   posts,
   projects,
+  socialLinks,
 }: {
   locale: string;
   posts: Array<{ id: string; slug: string; titleEn: string; titleAr: string | null; excerptEn: string | null; excerptAr: string | null; contentEn: string; publishedAt: Date | null; tags: string[] | null }>;
   projects: Array<{ id: string; slug: string; titleEn: string; titleAr: string | null; descriptionEn: string | null; descriptionAr: string | null; techStack: string[] | null; githubUrl: string | null; demoUrl: string | null }>;
+  socialLinks: { github: string; linkedin: string };
 }) {
   const t = useTranslations();
 
@@ -83,22 +93,26 @@ function HomeContent({
                 <Button>{t("home.learnMore")}</Button>
               </Link>
               <div className="flex items-center gap-3">
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-text-primary)] transition-colors"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-text-primary)] transition-colors"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
+                {socialLinks.github && (
+                  <a
+                    href={socialLinks.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-text-primary)] transition-colors"
+                  >
+                    <Github className="w-5 h-5" />
+                  </a>
+                )}
+                {socialLinks.linkedin && (
+                  <a
+                    href={socialLinks.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-text-primary)] transition-colors"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                )}
               </div>
             </div>
           </div>

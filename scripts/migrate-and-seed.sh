@@ -17,6 +17,9 @@ node ./node_modules/tsx/dist/cli.mjs scripts/seed-uses.ts
 echo ">>> seed projects (idempotent)"
 node ./node_modules/tsx/dist/cli.mjs scripts/seed-projects.ts
 
+echo ">>> seed settings (idempotent)"
+node ./node_modules/tsx/dist/cli.mjs scripts/seed-settings.ts
+
 echo ">>> seed admin account (idempotent)"
 node ./node_modules/tsx/dist/cli.mjs scripts/seed-admin.ts
 

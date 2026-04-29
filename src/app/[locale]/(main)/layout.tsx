@@ -15,8 +15,8 @@ export default async function MainLayout({
   }
 
   const socialLinks = {
-    github: (settings.githubUrl as string) || "",
-    linkedin: (settings.linkedinUrl as string) || "",
+    github: (settings.githubUrl as string) || "https://github.com/Khalid-Hamad",
+    linkedin: (settings.linkedinUrl as string) || "https://linkedin.com/in/khalid-alsubaie",
   };
 
   return (

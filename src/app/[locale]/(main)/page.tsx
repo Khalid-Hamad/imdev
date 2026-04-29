@@ -35,8 +35,8 @@ export default async function HomePage({
   }
 
   const socialLinks = {
-    github: (settings.githubUrl as string) || "",
-    linkedin: (settings.linkedinUrl as string) || "",
+    github: (settings.githubUrl as string) || "https://github.com/Khalid-Hamad",
+    linkedin: (settings.linkedinUrl as string) || "https://linkedin.com/in/khalid-alsubaie",
   };
 
   return <HomeContent locale={locale} posts={posts.slice(0, 3)} projects={projects} socialLinks={socialLinks} />;

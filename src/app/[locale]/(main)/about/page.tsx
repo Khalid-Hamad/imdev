@@ -140,21 +140,37 @@ function AboutContent({
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
                         <div>
                           <h3 className="text-[17px] font-semibold text-[var(--color-text-primary)]">
-                            {(d.role as string) || ""}
+                            {isAr
+                              ? (d.roleAr as string) || (d.role as string)
+                              : (d.role as string) || ""}
                           </h3>
                           <p className="text-[15px] font-medium text-[var(--color-accent)]">
-                            {(d.company as string) || ""}
+                            {isAr
+                              ? (d.companyAr as string) || (d.company as string)
+                              : (d.company as string) || ""}
                           </p>
                         </div>
                         <div className="text-[13px] text-[var(--color-text-tertiary)] shrink-0">
-                          <p>{(d.period as string) || ""}</p>
-                          <p>{(d.location as string) || ""}</p>
+                          <p>
+                            {isAr
+                              ? (d.periodAr as string) || (d.period as string)
+                              : (d.period as string) || ""}
+                          </p>
+                          <p>
+                            {isAr
+                              ? (d.locationAr as string) || (d.location as string)
+                              : (d.location as string) || ""}
+                          </p>
                         </div>
                       </div>
-                      {highlights.length > 0 && (
+                      {((isAr ? (d.highlightsAr as string[]) : null) ||
+                        (d.highlights as string[]) ||
+                        []) .length > 0 && (
                         <ul className="space-y-2 mt-3">
-                          {highlights
-                            .filter((h) => h.trim())
+                          {((isAr ? (d.highlightsAr as string[]) : null) ||
+                            (d.highlights as string[]) ||
+                            [])
+                            .filter((h) => h?.trim())
                             .map((h, j) => (
                               <li
                                 key={j}

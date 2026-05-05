@@ -4,10 +4,10 @@
     "data": {
       "name": "Khalid Hamad AlSubaie",
       "location": "Riyadh, Saudi Arabia",
-      "bioEn": "Lead engineer moving deeper into Engineering + Applied AI — LLM/CV prototyping, platform delivery, and secure scalable environments for AI products.",
-      "bioAr": "مهندس قيادي يتجه نحو الهندسة والذكاء الاصطناعي التطبيقي — نمذجة LLM ورؤية الحاسوب، وتسليم المنصات، وبناء بيئات آمنة وقابلة للتوسع لمنتجات الذكاء الاصطناعي.",
-      "summaryEn": "Lead engineer transitioning deeper into Engineering + Applied AI, combining hands-on LLM/CV prototyping with strong platform delivery. Build secure, scalable environments for AI products (Azure/OCI, Kubernetes, CI/CD, GitOps, monitoring) and drive measurable improvements in SDLC, reliability, and deployment outcomes.",
-      "summaryAr": "مهندس قيادي يدمج النمذجة العملية لنماذج اللغات الكبيرة ورؤية الحاسوب مع تسليم المنصات القوي؛ يبني بيئات آمنة وقابلة للتوسع لمنتجات الذكاء الاصطناعي (Azure/OCI، Kubernetes، CI/CD، GitOps، المراقبة) ويحسّن دورة حياة التطوير والموثوقية والنشر بشكل قابل للقياس."
+      "bioEn": "I'm a lead engineer focused on making AI practical and reliable. I build the bridge between complex AI research and real-world software that people can actually use.",
+      "bioAr": "أنا مهندس قيادي أركز على جعل الذكاء الاصطناعي عملياً وموثوقاً. أقوم ببناء الجسر بين أبحاث الذكاء الاصطناعي المعقدة والتطبيقات البرمجية التي يمكن للناس استخدامها فعلياً.",
+      "summaryEn": "With a background in software engineering and deep experience in AI/ML, I help teams launch intelligent systems that are secure, scalable, and easy to use. I specialize in turning complex AI models into reliable tools, ensuring they perform well in production and solve real problems for users.",
+      "summaryAr": "بخلفية في هندسة البرمجيات وخبرة عميقة في الذكاء الاصطناعي، أساعد الفرق على إطلاق أنظمة ذكية آمنة وقابلة للتوسع وسهلة الاستخدام. أتخصص في تحويل نماذج الذكاء الاصطناعي المعقدة إلى أدوات موثوقة، مع ضمان أدائها الجيد في بيئة الإنتاج وحلها لمشاكل المستخدمين الحقيقية."
     }
   },
   {
@@ -18,10 +18,20 @@
       "period": "Sep 2025 – Present",
       "location": "Riyadh, Saudi Arabia",
       "highlights": [
-        "Kubernetes-aware LLM converting natural-language intent into validated kubectl commands; QLoRA fine-tuning and safety controls (syntax validation, allowlist/denylist) with a 1,966-case evaluation suite.",
-        "Reproducible evaluation workflow for fine-tuning variants and prompting strategies; A/B harness with metrics (success rate, safety rate, latency p50/p95).",
-        "Multiple AI solution use cases for LLMs and computer vision; deployable prototypes with acceptance criteria (~10 stakeholder demos).",
-        "Agent-based eLearning platform as technical lead — architecture, delivery, and cross-functional coordination."
+        "Built and fine-tuned a Kubernetes-aware LLM converting natural-language intent into validated, executable kubectl commands, reducing operator toil and improving system safety.",
+        "Implemented a reproducible evaluation workflow for comparing AI fine-tuning variants and prompting strategies, including an A/B test harness with tracked metrics.",
+        "Technical lead for an intelligent eLearning platform, coordinating between technology, design, and user needs to deliver a seamless learning experience.",
+        "Contributed to multiple AI solution use cases for LLMs and Computer Vision, translating requirements into deployable prototypes with measurable acceptance criteria."
+      ],
+      "roleAr": "مهندس قيادي، علوم التطبيقات (مختبر التقنيات المتقدمة)",
+      "companyAr": "HUMAIN",
+      "periodAr": "سبتمبر 2025 – الحاضر",
+      "locationAr": "الرياض، المملكة العربية السعودية",
+      "highlightsAr": [
+        "بناء وضبط نموذج لغوي كبير (LLM) مدرك لـ Kubernetes يقوم بتحويل النوايا باللغة الطبيعية إلى أوامر kubectl صالحة وقابلة للتنفيذ، مما يقلل من عناء المشغلين ويحسن سلامة النظام.",
+        "تنفيذ سير عمل تقييم قابل للتكرار لمقارنة متغيرات الضبط الدقيق للذكاء الاصطناعي واستراتيجيات هندسة الأوامر، بما في ذلك أداة اختبار A/B مع مقاييس تتبع.",
+        "القائد التقني لمنصة تعلم إلكتروني ذكية، والتنسيق بين التكنولوجيا والتصميم واحتياجات المستخدمين لتقديم تجربة تعلم سلسة.",
+        "المساهمة في حالات استخدام حلول ذكاء اصطناعي متعددة للنماذج اللغوية الكبيرة والرؤية الحاسوبية، وترجمة المتطلبات إلى نماذج أولية قابلة للنشر مع معايير قبول قابلة للقياس."
       ]
     }
   },
@@ -33,15 +43,28 @@
       "period": "Feb 2023 – Sep 2025",
       "location": "Riyadh, Saudi Arabia",
       "highlights": [
-        "Led cloud operations team of 6; multiple AI apps across dev/test/prod — ~99.9% uptime, MTTR < 30 min, ~2–3 incidents/month.",
-        "Established Azure DevOps as standard; migrated SCM from GitLab and boards from Jira across 40+ repos / 15+ projects.",
-        "GitFlow + PR governance; ~35% fewer hotfixes/rollbacks across 5+ teams.",
-        "CI/CD + Argo CD GitOps — ~70% fewer manual deploy steps; deploy time ~45 min → ~10 min.",
-        "SonarQube + Black Duck across 35+ repos — ~40% fewer critical/high findings.",
-        "CI optimization — build ~18 min → ~7 min.",
-        "Azure AI landing zones; Fortinet FW/WAF; observability (Azure Monitor, App Insights, ELK) — TTD < 5 min, TTR < 30 min.",
-        "AI/ML studios & MLOps workspace — env setup ~5 days → < 4 hours.",
-        "AD SSO/OAuth for 10+ apps; Azure EA RFP ~20% cost savings; M365 email migration zero downtime; Cloud Fusion ERP + ZATCA VAT automation (10,000+ invoices/mo, ~60% manual effort reduction)."
+        "Managed a team of 6 to keep high-priority AI systems running smoothly around the clock, maintaining 99.9% uptime and solving issues in minutes.",
+        "Standardized how we build and release software by moving 40+ projects to a unified system, making collaboration easier across the entire organization.",
+        "Improved the speed and safety of our deployments, cutting manual work by 70% and reducing deployment time from 45 to 10 minutes.",
+        "Strengthened security posture by integrating automated scanning (SonarQube, Black Duck), reducing critical findings by 40% through gated pipelines.",
+        "Built modern 'landing zones' for AI that allowed research teams to go from setting up their environment to starting work in hours instead of days.",
+        "Led the RFP process for an Azure Enterprise Agreement, achieving ~20% annual cost reduction and optimizing licensing efficiency.",
+        "Managed Cloud Fusion ERP integration with ZATCA for automated VAT invoice generation, processing 10,000+ invoices/month and reducing manual effort by 60%.",
+        "Successfully migrated corporate email from STC to Microsoft 365 with zero downtime, ensuring business continuity."
+      ],
+      "roleAr": "مهندس برمجيات قيادي (مختبر الذكاء الاصطناعي) / مهندس DevOps أول، قائد فريق العمليات",
+      "companyAr": "الشركة السعودية للذكاء الاصطناعي (SCAI)، اندمجت في HUMAIN",
+      "periodAr": "فبراير 2023 – سبتمبر 2025",
+      "locationAr": "الرياض، المملكة العربية السعودية",
+      "highlightsAr": [
+        "إدارة فريق من 6 أفراد للحفاظ على تشغيل أنظمة الذكاء الاصطناعي ذات الأولوية العالية بسلاسة على مدار الساعة، مع الحفاظ على وقت تشغيل بنسبة 99.9% وحل المشكلات في دقائق.",
+        "توحيد كيفية بناء وإصدار البرمجيات عن طريق نقل أكثر من 40 مشروعاً إلى نظام موحد، مما سهل التعاون عبر المنظمة بأكملها.",
+        "تحسين سرعة وسلامة عمليات النشر لدينا، وتقليل العمل اليدوي بنسبة 70% وتقليل وقت النشر من 45 دقيقة إلى 10 دقائق.",
+        "تعزيز الوضع الأمني من خلال دمج المسح الآلي (SonarQube، Black Duck)، مما قلل من النتائج الحرجة بنسبة 40% من خلال خطوط أنابيب مفلترة.",
+        "بناء 'مناطق هبوط' حديثة للذكاء الاصطناعي سمحت لفرق البحث بالانتقال من إعداد بيئتهم إلى بدء العمل في ساعات بدلاً من أيام.",
+        "قيادة عملية طلب العروض (RFP) لاتفاقية مؤسسة Azure، مما حقق خفضاً في التكاليف السنوية بنسبة ~20% وتحسين كفاءة الترخيص.",
+        "إدارة تكامل Cloud Fusion ERP مع ZATCA لإنشاء فواتير ضريبة القيمة المضافة آلياً، ومعالجة أكثر من 10,000 فاتورة شهرياً وتقليل الجهد اليدوي بنسبة 60%.",
+        "نجاح هجرة البريد الإلكتروني للشركة من STC إلى Microsoft 365 دون أي وقت توقف، مما ضمن استمرارية الأعمال."
       ]
     }
   },
@@ -53,9 +76,18 @@
       "period": "May 2024 – Aug 2024",
       "location": "Riyadh, Saudi Arabia",
       "highlights": [
-        "GitHub Actions CI/CD across 12+ repos — deploy ~30 min → ~8 min.",
-        "HA compliant Design System platform — 99.9% SLA.",
-        "Azure DevOps release automation, handover docs and runbooks."
+        "Automated the deployment of 12+ projects using GitHub Actions, reducing release times from 30 minutes to just 8.",
+        "Designed and deployed a high-availability, compliant Design System platform aligned with government standards, achieving 99.9% availability.",
+        "Integrated Azure DevOps for release automation and delivered comprehensive handover documentation and runbooks for long-term maintainability."
+      ],
+      "roleAr": "مهندس استشاري",
+      "companyAr": "هيئة الحكومة الرقمية",
+      "periodAr": "مايو 2024 – أغسطس 2024",
+      "locationAr": "الرياض، المملكة العربية السعودية",
+      "highlightsAr": [
+        "أتمتة نشر أكثر من 12 مشروعاً باستخدام GitHub Actions، مما قلل أوقات الإصدار من 30 دقيقة إلى 8 دقائق فقط.",
+        "تصميم ونشر منصة نظام تصميم عالية التوفر ومتوافقة مع المعايير الحكومية، وتحقيق توافر بنسبة 99.9%.",
+        "دمج Azure DevOps لأتمتة الإصدارات وتقديم وثائق تسليم وكتيبات تشغيل شاملة لضمان القابلية للصيانة على المدى الطويل."
       ]
     }
   },
@@ -67,11 +99,22 @@
       "period": "Mar 2021 – Feb 2023",
       "location": "Riyadh, Saudi Arabia",
       "highlights": [
-        "Azure DevOps for 50+ projects; legacy migration to Azure across environments.",
-        "120+ CI/CD pipelines; 40–50 deployments/week, ~98% success.",
-        "Branch strategy & release management — ~30% fewer prod defects, ~35% fewer rollbacks.",
-        "Self-hosted agent pool (12) — ~60% shorter queue time.",
-        "Flutter mobile CI/CD (6 apps), bi-weekly cadence; DR RTO < 1h, RPO < 15 min."
+        "Modernized the Najiz Platform by moving 50+ projects to the cloud, ensuring a more stable and scalable foundation for public services.",
+        "Managed over 120 automated pipelines that handled 40-50 successful updates every week with near-perfect reliability.",
+        "Designed CI/CD pipelines for Flutter mobile applications, enabling faster iteration cycles across 6 mobile apps with a bi-weekly release cadence.",
+        "Established a Disaster Recovery (DR) plan with automated backups and failover strategies, significantly improving platform resilience (RTO < 1h).",
+        "Reduced production defects by 30% through refined branch strategy and release management practices."
+      ],
+      "roleAr": "مهندس DevOps (Azure DevOps)",
+      "companyAr": "وزارة العدل (منصة ناجز)",
+      "periodAr": "مارس 2021 – فبراير 2023",
+      "locationAr": "الرياض، المملكة العربية السعودية",
+      "highlightsAr": [
+        "تحديث منصة ناجز من خلال نقل أكثر من 50 مشروعاً إلى السحابة، مما ضمن أساساً أكثر استقراراً وقابلية للتوسع للخدمات العامة.",
+        "إدارة أكثر من 120 خط أنابيب مؤتمت تعاملت مع 40-50 تحديثاً ناجحاً كل أسبوع بموثوقية شبه مثالية.",
+        "تصميم خطوط أنابيب CI/CD لتطبيقات الجوال Flutter، مما مكن من دورات تكرار أسرع عبر 6 تطبيقات جوال مع وتيرة إصدار كل أسبوعين.",
+        "إنشاء خطة التعافي من الكوارث (DR) مع نسخ احتياطي آلي واستراتيجيات تجاوز الفشل، مما حسن مرونة المنصة بشكل كبير (RTO < 1 ساعة).",
+        "تقليل عيوب الإنتاج بنسبة 30% من خلال استراتيجية فروع ممارسات إدارة إصدارات محسنة."
       ]
     }
   },
@@ -83,8 +126,16 @@
       "period": "Jan 2021 – Mar 2021",
       "location": "Riyadh, Saudi Arabia",
       "highlights": [
-        "Vendor coordination for corporate website — ~10 weeks, 20+ pages/features.",
-        "Internal systems evaluation — 100+ issues resolved, avg resolution < 3 days."
+        "Led the successful launch of the corporate website, coordinating with partners to deliver over 20 key features in just 10 weeks.",
+        "Streamlined internal tech support, resolving over 100 issues with a focus on speed and user satisfaction."
+      ],
+      "roleAr": "مسؤول عمليات تقنية المعلومات",
+      "companyAr": "شركة لدن للاستثمار",
+      "periodAr": "يناير 2021 – مارس 2021",
+      "locationAr": "الرياض، المملكة العربية السعودية",
+      "highlightsAr": [
+        "قيادة الإطلاق الناجح للموقع الإلكتروني للشركة، والتنسيق مع الشركاء لتقديم أكثر من 20 ميزة رئيسية في 10 أسابيع فقط.",
+        "تبسيط الدعم الفني الداخلي، وحل أكثر من 100 مشكلة مع التركيز على السرعة ورضا المستخدمين."
       ]
     }
   },
@@ -119,7 +170,11 @@
     "type": "skills",
     "data": {
       "category": "Languages",
-      "items": ["Python", "Bash", "YAML"]
+      "items": [
+        "Python",
+        "Bash",
+        "YAML"
+      ]
     }
   },
   {
@@ -171,7 +226,13 @@
     "type": "skills",
     "data": {
       "category": "Data & backend / integrations",
-      "items": ["Microsoft AD", "SSO", "OAuth", "Automation scripting", "Enterprise integrations"]
+      "items": [
+        "Microsoft AD",
+        "SSO",
+        "OAuth",
+        "Automation scripting",
+        "Enterprise integrations"
+      ]
     }
   },
   {
@@ -211,16 +272,8 @@
     "type": "contact",
     "data": {
       "label": "Email",
-      "value": "k.h.alhamad@outlook.com",
-      "href": "mailto:k.h.alhamad@outlook.com"
-    }
-  },
-  {
-    "type": "contact",
-    "data": {
-      "label": "Mobile",
-      "value": "+966 55 011 2880",
-      "href": "tel:+966550112880"
+      "value": "dev@im.dev",
+      "href": "mailto:dev@im.dev"
     }
   }
 ]

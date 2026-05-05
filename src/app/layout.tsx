@@ -7,10 +7,6 @@ export const metadata: Metadata = {
   },
   description:
     "Personal website of Khalid AlSubaie. End-to-End Engineer — Software, Applied AI, ML.",
-  icons: {
-    icon: "/favicon.png",
-    apple: "/apple-icon.png",
-  },
   openGraph: {
     images: [{ url: "/og-image.png", width: 700, height: 300 }],
   },

@@ -10,8 +10,9 @@ export function Card({ className, interactive, children, ...props }: CardProps) 
     <div
       className={cn(
         "bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-[var(--radius-lg)] p-6",
+        "shadow-[var(--shadow-sm)]",
         "transition-all duration-300 ease-out",
-        interactive && "cursor-pointer hover:-translate-y-0.5 hover:border-[var(--color-accent)]",
+        interactive && "cursor-pointer hover:-translate-y-0.5 hover:border-[var(--color-accent)] hover:shadow-[var(--shadow-md)]",
         className
       )}
       {...props}

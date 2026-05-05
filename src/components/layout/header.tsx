@@ -27,7 +27,7 @@ export function Header() {
       <Container>
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="shrink-0">
-            <Logo size="sm" />
+            <Logo size="md" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">

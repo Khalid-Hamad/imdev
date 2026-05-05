@@ -10,13 +10,13 @@
     "greeting": "Hi, I'm",
     "name": "Khalid.",
     "titleAccent": "Applied AI & Software Engineer",
-    "heroLine1": "building ",
-    "heroAccent1": "AI-native systems",
-    "heroLine1End": " from idea to production.",
-    "heroBody": "I work at the intersection of software engineering, applied AI, and platform delivery turning complex ideas into reliable products, intelligent workflows, and scalable systems.",
+    "heroLine1": "I help teams build and launch ",
+    "heroAccent1": "AI-powered systems",
+    "heroLine1End": " that actually work.",
+    "heroBody": "I bridge the gap between complex AI research and real-world software. My work is about making sure intelligent systems are reliable, secure, and easy for people to use every day.",
     "heroClosingPre": "Based in ",
     "heroClosingAccent": "Saudi Arabia",
-    "heroClosingPost": ", I'm focused on building practical AI systems that support real teams, real users, and the next wave of digital transformation.",
+    "heroClosingPost": ", I'm focused on building practical AI that solves real problems and supports the next wave of digital transformation.",
     "featuredProjects": "Featured Projects",
     "latestPosts": "Latest Posts",
     "viewAll": "View all",
@@ -24,7 +24,7 @@
   },
   "about": {
     "title": "About",
-    "description": "End-to-End Engineer with deep experience across AI, backend, frontend, and infrastructure.",
+    "description": "An engineer who loves building things that work—from smart AI models to the underlying systems that power them.",
     "experience": "Experience",
     "education": "Education",
     "skills": "Technical Skills",
@@ -34,7 +34,7 @@
   },
   "blog": {
     "title": "Blog",
-    "description": "Thoughts on engineering, AI, and building systems that matter.",
+    "description": "My thoughts on technology, AI, and how we build systems that actually make a difference.",
     "readMore": "Read more",
     "minRead": "{count, plural, one {1 min read} other {# min read}}",
     "noPosts": "No posts yet. Check back soon.",
@@ -43,7 +43,7 @@
   },
   "projects": {
     "title": "Projects",
-    "description": "A collection of things I've built — from AI models to full-stack applications.",
+    "description": "A look at some of the things I’ve built, ranging from experimental AI to complete applications.",
     "viewProject": "View project",
     "viewCode": "View code",
     "liveDemo": "Live demo",
@@ -58,7 +58,7 @@
   },
   "uses": {
     "title": "Uses",
-    "description": "The tools, technologies, and setup I use for my work.",
+    "description": "The gear and software I use to stay productive and build my projects.",
     "yearsExp": "{count, plural, one {1 year} other {# years}}",
     "noItems": "No items yet.",
     "tags": {
@@ -70,7 +70,7 @@
   },
   "footer": {
     "copyright": "All rights reserved.",
-    "description": "Software · Applied AI · ML"
+    "description": "Building the future with software and AI."
   },
   "auth": {
     "signInTitle": "Sign in to admin panel",

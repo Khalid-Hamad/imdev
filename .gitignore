@@ -41,3 +41,10 @@ public/uploads/uses/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agent configs (local-only, do not push)
+/.claude/
+/.codex/
+/.gemini/
+/KhalidAlSubaie_2026-04-08.pdf
+/KhalidAlsubaie-full-profile-v2.pdf

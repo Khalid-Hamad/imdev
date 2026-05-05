@@ -31,6 +31,7 @@ const nextConfig: NextConfig = {
       { pathname: "/*.png", search: "" },
     ],
     remotePatterns: remoteHosts,
+    qualities: [75, 95],
   },
 };
 

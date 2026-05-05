@@ -18,6 +18,10 @@ export const projects = pgTable("projects", {
   featured: boolean("featured").default(false),
   sortOrder: integer("sort_order").default(0),
   status: varchar("status", { length: 20 }).notNull().default("draft"),
+  // Stable identifier for rows that originated in data/seed/projects.json.
+  // NULL for admin-created rows. Lets the seed script upsert + prune
+  // without wiping admin-only projects.
+  seedKey: varchar("seed_key", { length: 100 }),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });

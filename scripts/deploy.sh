@@ -2,9 +2,17 @@
 set -euo pipefail
 
 APP_DIR="/opt/imdev"
+SSH_REMOTE="git@github.com:Khalid-Hamad/imdev.git"
 cd "${APP_DIR}"
 
 echo "=== Deploying imdev ==="
+
+# Force SSH origin: avoids HTTPS prompts and lets deploy keys do the auth.
+CURRENT_REMOTE="$(git remote get-url origin 2>/dev/null || echo "")"
+if [[ "${CURRENT_REMOTE}" == https://* ]]; then
+    echo ">>> Switching origin from HTTPS to SSH..."
+    git remote set-url origin "${SSH_REMOTE}"
+fi
 
 echo ">>> Pulling latest code..."
 git pull origin main
